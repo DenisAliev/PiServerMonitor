@@ -1,0 +1,34 @@
+.footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #878a87;
+    color: white;
+    text-align: center;
+}
+
+.header{
+    background-color:#ebfff1;
+}
+
+.brand{
+    margin-left: 20px;
+}
+
+.login-form{
+    max-width: 300px;
+    min-width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30%;
+    border: solid 1px #393939;
+    padding: 20px;
+    background: #ebfff1;
+    border-radius:20px;
+    text-align: center;
+}
+
+.layout{
+    background-color: #fafffa;
+}

@@ -10,7 +10,7 @@ export default function StatusBar() {
     
     return(
             <div>
-                <Row>
+                <Row className="status-bar-row" style={{justifyContent:"center"}}>
                 {infoStatuses.map( (infoStatus,i) =>{
                     return(
                             <Col sm="3">

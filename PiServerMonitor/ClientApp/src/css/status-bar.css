@@ -1,0 +1,11 @@
+.status-label{
+    text-align:center;
+}
+
+.status-container{
+    border: solid 1px rgba(172, 172, 172, 0.28);
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 10px;
+    box-shadow: 2px 2px rgba(143, 143, 143, 0.81);
+}

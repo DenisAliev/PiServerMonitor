@@ -9,10 +9,9 @@ import {
     DropdownItem,
 } from 'reactstrap';
 
-export default class NavMenu extends Component{
+export default function NavMenu(){
 
-    render() {
-        return(
+    return(
             <Nav className="mr-auto" navbar>
                 <NavItem>
                     <NavLink href="/components/">Components</NavLink>
@@ -38,6 +37,6 @@ export default class NavMenu extends Component{
                     </DropdownMenu>
                 </UncontrolledDropdown>
             </Nav>  
-        );
-    }
+    );
+
 }

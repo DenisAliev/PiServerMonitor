@@ -22,7 +22,8 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 30%;
-    border: solid 1px #393939;
+    border: solid 1px rgba(105, 105, 105, 0.22);
+    box-shadow: 2px 2px rgba(115, 115, 115, 0.54);
     padding: 20px;
     background: #ebfff1;
     border-radius:20px;

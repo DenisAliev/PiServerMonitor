@@ -20,13 +20,14 @@ namespace PiServerMonitor.Services.Authentication
         {
             var identity = GetIdentity(user);
             var now = DateTime.UtcNow;
+            var credentials = new SigningCredentials(_securityKey, SecurityAlgorithms.HmacSha256Signature);
             var jwt = new JwtSecurityToken(
                 issuer: JwtOptions.ISSUER,
                 audience: JwtOptions.AUDIENCE,
                 notBefore: now,
                 claims: identity.Claims,
                 expires: now.Add(TimeSpan.FromHours(_hours)),
-                signingCredentials: new SigningCredentials(_securityKey, SecurityAlgorithms.Sha256)
+                signingCredentials: credentials
             );
             var encodedToken = new JwtSecurityTokenHandler().WriteToken(jwt);
             return new JwtResponse(encodedToken);

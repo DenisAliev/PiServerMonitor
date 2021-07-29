@@ -12,8 +12,8 @@ export default class App extends Component {
     return (
         <Layout>
             <Switch>
-                <PrivateRoute path='/' component={Login}/>
-                <Route path='/panel' component={ControlPanel}/>
+                <Route exact path='/' component={Login}/>
+                <PrivateRoute path='/panel' component={ControlPanel}/>
             </Switch>
         </Layout>
     );

@@ -4,17 +4,31 @@ import {
     NavItem,
     NavLink
 } from 'reactstrap';
+import User from "../services/user.service";
 
 export default function NavMenu(){
-
+    
+    let auth;
+    if(User.isAuthenticated()){
+        auth = (
+            <NavItem>
+                <NavLink href="/" style={{justifyContent:"right"}} onClick={()=>{User.removeToken();}}>LogOut</NavLink>
+            </NavItem>
+        );
+    }else{
+        auth = (
+            <NavItem>
+                <NavLink href="/">Login</NavLink>
+            </NavItem>
+        );
+    }
+    
     return(
             <Nav className="mr-auto" navbar>
                 <NavItem>
-                    <NavLink href="/panel/">Components</NavLink>
+                    <NavLink href="/panel/">Panel</NavLink>
                 </NavItem>
-                <NavItem>
-                    <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
-                </NavItem>
+                {auth}
             </Nav>  
     );
 

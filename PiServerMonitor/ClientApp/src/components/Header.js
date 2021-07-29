@@ -22,7 +22,6 @@ export default function Header(props){
                     <NavbarToggler onClick={toggle} />
                     <Collapse isOpen={isOpen} navbar>
                         <NavMenu/>
-                        <NavbarText>Simple Text</NavbarText>
                     </Collapse>
                 </Navbar>
             </div>

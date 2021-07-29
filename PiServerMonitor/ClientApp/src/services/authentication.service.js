@@ -6,7 +6,7 @@ const Authentication = {
             let response = await axios.post("/auth/token",{
                 login: _login, password: _password
             });
-            let token = response.data.token;
+            let token = response.data.access_token;
             return (token !== undefined) ? token: null;
         }catch (e) {
             return null;

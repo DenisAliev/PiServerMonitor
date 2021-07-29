@@ -5,7 +5,7 @@ using PiServerMonitor.Services.Authentication;
 namespace PiServerMonitor.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("/auth")]
     public class AuthController: ControllerBase
     {
         private readonly IJwtService _jwtService;

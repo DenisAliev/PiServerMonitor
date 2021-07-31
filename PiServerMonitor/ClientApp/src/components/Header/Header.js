@@ -1,6 +1,6 @@
 import React, {useState} from "react";
-import NavMenu from "./NavMenu";
-import "../css/site.css";
+import NavMenu from "../NavMenu/NavMenu";
+import "./Header.css"
 import {
     Collapse,
     Navbar,

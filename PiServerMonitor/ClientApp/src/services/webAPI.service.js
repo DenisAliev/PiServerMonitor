@@ -1,13 +1,14 @@
 import User from "./user.service";
 import axios from "axios";
-const webApi = {
+const webAPI = {
     getInfo: async () => {
-        if(await User.isAuthenticated()){
+        if(User.isAuthenticated()){
             let token = User.getCurrentToken();
             try{
-                let response = await axios.get("/data/common/info", {
+                let response = await axios.get("/rpi/stats", {
                     headers:{
-                        Authorization: `Bearer ${token}`
+                        Accept: "application/json",
+                        Authorization: "Bearer " + token
                     }
                 } );
                 return response.data;
@@ -15,31 +16,31 @@ const webApi = {
                 return null;
             }
         }
+        return null;
     },
-    shutUpRaspberry:async()=>{
+    shutdownRaspberry:async()=>{
         if(await User.isAuthenticated()){
             let token = User.getCurrentToken();
-            try{
-                await axios.post("/act/shutup", {}, {
+          
+            await axios.post("/rpi/shutdown", {}, {
                         headers:{
+                            Accept: "application/json",
                             Authorization: `Bearer ${token}`
                         }
-                } );
-            }catch (e) {
-            }
+            } );
+           
         }
     },
-    restartRaspberry:async () => {
+    rebootRaspberry:async () => {
         if(await User.isAuthenticated()){
             let token = User.getCurrentToken();
-            try{
-                await axios.post("/act/restart", {}, {
+            await axios.post("/rpi/reboot", {}, {
                     headers:{
+                        Accept: "application/json",
                         Authorization: `Bearer ${token}`
                     }
-                } );
-            }catch (e) {
-            }
+            } );
         }
     }
 };
+export default webAPI;

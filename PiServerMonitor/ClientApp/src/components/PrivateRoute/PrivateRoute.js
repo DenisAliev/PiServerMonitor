@@ -1,6 +1,6 @@
 import {Route, Redirect} from "react-router-dom";
 import React, {useEffect, useState} from "react";
-import User from "../services/user.service";
+import User from "../../services/user.service";
 
 export default function PrivateRoute(props){
     

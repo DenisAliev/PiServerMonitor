@@ -1,13 +1,13 @@
 import React from "react";
-import StatusBar from "../../components/StatusBar";
-import ControlButtons from "../../components/ControlButtons";
+import {ChStatusBar} from "../../components/StatusBar";
+import {ChControlButtons} from "../../components/ControlButtons";
 
 export default function ControlPanel(){
-    
+        
         return(
             <div>
-                <StatusBar/>
-                <ControlButtons/>
+               <ChStatusBar/>
+                    <ChControlButtons/>
             </div>
         );
 }

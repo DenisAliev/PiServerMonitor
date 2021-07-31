@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using PiServerMonitor.Services.Authentication;
+using PiServerMonitor.Services.RaspberryPi;
 
 namespace PiServerMonitor
 {
@@ -44,6 +45,7 @@ namespace PiServerMonitor
             services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/build"; });
             services.AddSwaggerGen();
             services.AddJwtService(Configuration["JwtToken:Key"], int.Parse(Configuration["JwtToken:Lifetime"]));
+            services.AddRpiService();
         }
         
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -60,8 +62,11 @@ namespace PiServerMonitor
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
-
+            
             app.UseRouting();
+            
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

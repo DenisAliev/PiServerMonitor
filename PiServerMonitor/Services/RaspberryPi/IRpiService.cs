@@ -4,8 +4,8 @@ namespace PiServerMonitor.Services.RaspberryPi
 {
     public interface IRpiService
     {
-        public Task<float> GetTempAsync();
-        public void ShutDown();
-        public void Restart();
+        public Task<int> GetTempAsync();
+        public Task ShutDownAsync();
+        public Task RebootAsync();
     }
 }

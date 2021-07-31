@@ -10,10 +10,10 @@ namespace PiServerMonitor.Services.RaspberryPi
         {
             var result = "";
             
-            result = new Random().Next(30, 70).ToString() + ".3'C";
+            //result = new Random().Next(30, 70).ToString() + ".3'C";
 
             // bash command / opt / vc / bin / vcgencmd measure_temp
-            //result = await ExecuteCommandAsync("/opt/vc/bin/vcgencmd measure_temp");
+            result = await ExecuteCommandAsync("/opt/vc/bin/vcgencmd measure_temp");
             
             var temperatureResult = result.Substring(result.IndexOf('=') + 1, result.IndexOf("'") - (result.IndexOf('=') + 1)).Replace('.', ',');
             float.TryParse(temperatureResult, out float temperature);

@@ -1,26 +1,24 @@
 
-import React from "react";
+import React, {useState} from "react";
 import {Button, Form, FormGroup, Label, Container, Input, FormText, Row, Col} from 'reactstrap';
 import "../css/site.css";
+import Authentication from "../services/authentication.service";
+import User from "../services/user.service";
+import {Redirect} from "react-router-dom";
+import LoginForm from "../components/LoginForm";
 
-export default class Login extends React.Component{
-    render() {
+export default function Login(){
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    let handler = (newValue)=>{
+      setIsAuthenticated(newValue);  
+    };
+    if(isAuthenticated){
         return(
-            <Row>
-                <Col sm="xs" md={{ size: 6, offset: 3 }}>
-                    <Form className="login-form">
-                        <FormGroup>
-                            <Label for="login">Login</Label>
-                            <Input type="text" name="login" id="login" placeholder="with a placeholder" />
-                        </FormGroup>
-                        <FormGroup>
-                            <Label for="password">Password</Label>
-                            <Input type="password" name="password" id="password" placeholder="password placeholder" />
-                        </FormGroup>
-                        <Button>Submit</Button>
-                    </Form>
-                </Col>
-            </Row>
+            <Redirect to="/panel"/>
+        )
+    }else{
+        return(
+            <LoginForm handler={handler}/>
         );
     }
 }

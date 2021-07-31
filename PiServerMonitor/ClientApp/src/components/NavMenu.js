@@ -2,42 +2,34 @@ import React, {Component} from "react";
 import {
     Nav,
     NavItem,
-    NavLink,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem,
+    NavLink
 } from 'reactstrap';
+import User from "../services/user.service";
 
-export default class NavMenu extends Component{
-
-    render() {
-        return(
-            <Nav className="mr-auto" navbar>
-                <NavItem>
-                    <NavLink href="/components/">Components</NavLink>
-                </NavItem>
-                <NavItem>
-                    <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
-                </NavItem>
-                <UncontrolledDropdown nav inNavbar>
-                    <DropdownToggle nav caret>
-                        Options
-                    </DropdownToggle>
-                    <DropdownMenu right>
-                        <DropdownItem>
-                            Option 1
-                        </DropdownItem>
-                        <DropdownItem>
-                            Option 2
-                        </DropdownItem>
-                        <DropdownItem divider />
-                        <DropdownItem>
-                            Reset
-                        </DropdownItem>
-                    </DropdownMenu>
-                </UncontrolledDropdown>
-            </Nav>  
+export default function NavMenu(){
+    
+    let auth;
+    if(User.isAuthenticated()){
+        auth = (
+            <NavItem>
+                <NavLink href="/" style={{justifyContent:"right"}} onClick={()=>{User.removeToken();}}>LogOut</NavLink>
+            </NavItem>
+        );
+    }else{
+        auth = (
+            <NavItem>
+                <NavLink href="/">Login</NavLink>
+            </NavItem>
         );
     }
+    
+    return(
+            <Nav className="mr-auto" navbar>
+                <NavItem>
+                    <NavLink href="/panel/">Panel</NavLink>
+                </NavItem>
+                {auth}
+            </Nav>  
+    );
+
 }

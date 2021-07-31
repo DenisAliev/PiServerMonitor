@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Route, Switch, Router } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Layout from "./pages/Layout";
 import Login from "./pages/Login";
-
+import ControlPanel from "./pages/ControlPanel";
+import PrivateRoute from "./components/PrivateRoute";
 
 export default class App extends Component {
   static displayName = App.name;
@@ -10,7 +11,10 @@ export default class App extends Component {
   render () {
     return (
         <Layout>
-            <Route path='/' component={Login}/>
+            <Switch>
+                <Route exact path='/' component={Login}/>
+                <PrivateRoute path='/panel' component={ControlPanel}/>
+            </Switch>
         </Layout>
     );
   }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PiServerMonitor.Models;
@@ -20,6 +21,7 @@ namespace PiServerMonitor.Controllers
             _rpiService = rpiService;
         }
         
+        [Authorize]
         [HttpGet("/rpi/stats")]
         public async Task<IActionResult> GetStats()
         {
@@ -33,16 +35,28 @@ namespace PiServerMonitor.Controllers
         [HttpPost("/rpi/shutdown")]
         public async Task<IActionResult> PostShutDown()
         {
-            await _rpiService.ShutDownAsync();
-            _logger.LogError("RaspberryPi can`t shutdown now");
+            try
+            {
+                await _rpiService.ShutDownAsync();
+            }
+            finally
+            {
+                _logger.LogError("RaspberryPi can`t shutdown now");
+            }
             return Problem();
         }
         
         [HttpPost("/rpi/reboot")]
         public async Task<IActionResult> PostRestart()
         {
-            await _rpiService.RebootAsync();
-            _logger.LogError("RaspberryPi can`t reboot");
+            try
+            {
+                await _rpiService.RebootAsync();
+            }
+            finally
+            {
+                _logger.LogError("RaspberryPi can`t shutdown now");
+            }
             return Problem();
         }
     }

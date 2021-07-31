@@ -1,6 +1,6 @@
 import React from "react";
 import {Button, Row, Col} from "reactstrap";
-import "../css/control-buttons.css";
+import "./ControlButton.css";
 
 export default function ControlButtons(){
     return(

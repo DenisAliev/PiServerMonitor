@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import {Button, Col, Form, FormGroup, Input, Label, Row} from "reactstrap";
-import Authentication from "../services/authentication.service";
-import User from "../services/user.service";
+import Authentication from "../../services/authentication.service";
+import User from "../../services/user.service";
+import "./LoginForm.css";
 
 export default function LoginForm(props) {
     let loginInput = React.createRef();

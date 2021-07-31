@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {Row, Col, Card, CardTitle } from "reactstrap";
-import '../css/status-bar.css';
+import "./StatusBar.css"
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 

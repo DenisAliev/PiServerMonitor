@@ -1,19 +1,17 @@
 import React, {Component} from "react";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
+import Footer from "../../components/Footer"
+import Header from "../../components/Header";
 import {Container} from "reactstrap";
-import "../css/site.css";
+import "./Layout.css";
 
-export default class Layout extends Component{
-    render() {
+export default function Layout(props){
         return(
             <div className="layout">
                 <Header/>
                     <Container>
-                        {this.props.children}
+                        {props.children}
                     </Container>
                 <Footer/>
             </div>
         );
-    }
 }

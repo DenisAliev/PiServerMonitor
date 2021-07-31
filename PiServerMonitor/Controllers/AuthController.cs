@@ -5,7 +5,6 @@ using PiServerMonitor.Services.Authentication;
 namespace PiServerMonitor.Controllers
 {
     [ApiController]
-    [Route("/auth")]
     public class AuthController: ControllerBase
     {
         private readonly IJwtService _jwtService;
@@ -15,7 +14,7 @@ namespace PiServerMonitor.Controllers
             _configuration = configuration;
             _jwtService = jwtService;
         }
-        [HttpPost("/token")]
+        [HttpPost("/auth/token")]
         public IActionResult GetToken(JwtUser user)
         {
             if (_configuration["User:Login"] == user.Login

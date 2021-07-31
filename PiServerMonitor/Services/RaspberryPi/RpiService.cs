@@ -6,34 +6,27 @@ namespace PiServerMonitor.Services.RaspberryPi
 {
     public class RpiService: IRpiService
     {
-        public async Task<float> GetTempAsync()
+        public async Task<int> GetTempAsync()
         {
             var result = "";
             
-            result = new Random().Next(30, 70).ToString() + ".3'C";
+            //result = new Random().Next(30, 70).ToString() + ".3'C";
 
             // bash command / opt / vc / bin / vcgencmd measure_temp
-            //result = await ExecuteCommandAsync("/opt/vc/bin/vcgencmd measure_temp");
+            result = await ExecuteCommandAsync("/opt/vc/bin/vcgencmd measure_temp");
             
             var temperatureResult = result.Substring(result.IndexOf('=') + 1, result.IndexOf("'") - (result.IndexOf('=') + 1)).Replace('.', ',');
-            float temperature;
-            if (float.TryParse(temperatureResult, out temperature))
-            {
-                return temperature;
-            }
-            else
-            {
-                return default(float);
-            }
+            float.TryParse(temperatureResult, out float temperature);
+            return (int)temperature;
         }
 
-        public void ShutDown()
+        public async Task ShutDownAsync()
         {
-            ExecuteCommandAsync("sudo shutdown now");
+            await ExecuteCommandAsync("sudo shutdown now");
         }
-        public void Restart()
+        public async Task RebootAsync()
         {
-            ExecuteCommandAsync("sudo reboot");
+            await ExecuteCommandAsync("sudo reboot");
         }
 
         private async Task<string> ExecuteCommandAsync(string cmd)

@@ -4,7 +4,7 @@ import {
     NavItem,
     NavLink
 } from 'reactstrap';
-import User from "../services/user.service";
+import User from "../../services/user.service";
 
 export default function NavMenu(){
     

@@ -1,23 +1,27 @@
 using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
+using Iot.Device.CpuTemperature;
 
 namespace PiServerMonitor.Services.RaspberryPi
 {
     public class RpiService: IRpiService
     {
+        private static CpuTemperature _cpuTemperature = new CpuTemperature();
         public async Task<int> GetTempAsync()
         {
-            var result = "";
-            
-            //result = new Random().Next(30, 70).ToString() + ".3'C";
-
-            // bash command / opt / vc / bin / vcgencmd measure_temp
-            result = await ExecuteCommandAsync("/opt/vc/bin/vcgencmd measure_temp");
-            
-            var temperatureResult = result.Substring(result.IndexOf('=') + 1, result.IndexOf("'") - (result.IndexOf('=') + 1)).Replace('.', ',');
-            float.TryParse(temperatureResult, out float temperature);
-            return (int)temperature;
+            int res = 0;
+            if (_cpuTemperature.IsAvailable)
+            {
+                var temperatures = _cpuTemperature.ReadTemperatures();
+                res = (int) temperatures.First().Temperature.DegreesCelsius;
+            }
+            else
+            {
+                throw new Exception("CPU temperature is not available");
+            }
+            return res;
         }
 
         public async Task ShutDownAsync()

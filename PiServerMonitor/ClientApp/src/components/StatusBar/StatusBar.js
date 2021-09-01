@@ -4,6 +4,7 @@ import "./StatusBar.css"
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import webAPI from "../../services/webAPI.service"
+import ProgressBar from "../ProgressBar";
 
 export default function StatusBar(props) {
     const [Stats, setStats] = useState([]);
@@ -27,16 +28,10 @@ export default function StatusBar(props) {
                 <Row className="status-bar-row" style={{justifyContent:"center"}}>
                 {Stats.map( (Status, i) =>{
                     return(
-                            <Col sm="3">
-                                <Card body s>
-                                    <CardTitle tag="h1" style={{textAlign:"center"}}>{Status.text}</CardTitle>
-                                    <CircularProgressbar value={Status.value} text={`${Status.value}%`}/>
-                                </Card>
-                            </Col>
+                        <ProgressBar value={status.value} text={status.text} unit={status.unit}/>
                     );
                 })}
                 </Row>
             </div>
     );
- 
 }

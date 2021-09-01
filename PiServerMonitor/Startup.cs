@@ -44,8 +44,8 @@ namespace PiServerMonitor
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/build"; });
             services.AddSwaggerGen();
-            services.AddJwtService(Configuration["JwtToken:Key"], int.Parse(Configuration["JwtToken:Lifetime"]));
-            services.AddRpiService();
+            services.AddJwtService(Configuration);
+            services.AddRpiService(Configuration);
         }
         
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

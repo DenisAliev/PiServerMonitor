@@ -26,7 +26,7 @@ export default function StatusBar(props) {
     return(
             <div>
                 <Row className="status-bar-row" style={{justifyContent:"center"}}>
-                {Stats.map( (Status, i) =>{
+                {Stats.map( (status, i) =>{
                     return(
                         <ProgressBar value={status.value} text={status.text} unit={status.unit}/>
                     );

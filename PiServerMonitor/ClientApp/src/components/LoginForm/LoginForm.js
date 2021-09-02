@@ -7,7 +7,8 @@ import "./LoginForm.css";
 export default function LoginForm(props) {
     let loginInput = React.createRef();
     let passwordInput = React.createRef();
-
+    const [Invalid, setInvalid] = React.useState(false);
+    
     let onSubmitHandler = async (e) => {
         e.preventDefault()
         let login = loginInput.current.value;
@@ -21,6 +22,7 @@ export default function LoginForm(props) {
         }else{
             loginInput.current.value = "";
             passwordInput.current.value = "";
+            setInvalid(true);
         }
     }
     return(
@@ -29,11 +31,12 @@ export default function LoginForm(props) {
                 <Form className="login-form" onSubmit={onSubmitHandler}>
                     <FormGroup>
                         <Label for="login">Login</Label>
-                        <Input type="text" name="login" id="login" placeholder="Login" innerRef={loginInput}/>
+                        <Input type="text" name="login" id="login" placeholder="Login" invalid={Invalid} 
+                               innerRef={loginInput}/>
                     </FormGroup>
                     <FormGroup>
                         <Label for="password">Password</Label>
-                        <Input type="password" name="password" id="password" placeholder="Password"
+                        <Input type="password" name="password" id="password" invalid={Invalid} placeholder="Password"
                                innerRef={passwordInput}/>
                     </FormGroup>
                     <Button>Submit</Button>

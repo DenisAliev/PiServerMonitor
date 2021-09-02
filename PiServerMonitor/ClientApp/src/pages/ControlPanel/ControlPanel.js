@@ -1,13 +1,18 @@
 import React from "react";
-import {ChStatusBar} from "../../components/StatusBar";
+import StatusBar from "../../components/StatusBar";
 import {ChControlButtons} from "../../components/ControlButtons";
+import Chart from "../../components/Chart";
 
-export default function ControlPanel(){
-        
-        return(
-            <div>
-               <ChStatusBar/>
-                    <ChControlButtons/>
-            </div>
-        );
+export default function ControlPanel() {
+
+    return (
+        <div>
+            <Chart maxTicks={10}/>
+
+            <StatusBar/>
+            
+            <ChControlButtons/>
+            
+        </div>
+    );
 }

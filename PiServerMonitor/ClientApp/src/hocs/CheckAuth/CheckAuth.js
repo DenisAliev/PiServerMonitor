@@ -3,7 +3,7 @@ import User from "../../services/user.service";
 import {Redirect} from "react-router-dom";
 
 export default function CheckAuth(WrapperComponent){
-    return function (props){
+    return function CheckAuth(props){
         const [isAuth, setIsAuth] =useState(true);
         const setIsAuthHandler = (value) => setIsAuth(value);
         if (!isAuth){

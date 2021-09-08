@@ -3,7 +3,7 @@ import webAPI from "../../services/webAPI.service";
 
 export default function WithStats(WrapperComponent, timeInterval){
     
-    return function(props) {
+    return function WithStats(props) {
         
         const [Stats, setStats] = useState([]);
         useEffect(() => {

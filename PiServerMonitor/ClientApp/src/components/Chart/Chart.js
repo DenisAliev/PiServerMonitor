@@ -12,8 +12,8 @@ function genData(rawData, maxTicks){
         data.datasets.push({
             label: key,
             data: [...value, Array(maxTicks)].slice(0,maxTicks),
-            fill: true,
-            backgroundColor: 'rgb(30,255,87)',
+            fill: false,
+            backgroundColor: 'rgb(130,188,142)',
             borderColor: 'rgba(30,255,87, 0.2)'
         });
     }

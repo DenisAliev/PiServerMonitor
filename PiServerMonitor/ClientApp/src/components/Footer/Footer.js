@@ -4,8 +4,7 @@ import "./Footer.css";
 export default function Footer(props){
         return(
          <div className="footer">
-             <p>Footer</p>
+             <p>Denis Aliev 2021</p>
          </div>
         );
-        
 }
